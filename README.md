@@ -9,18 +9,22 @@ translates an incoming SMS from 382com into a standard format for application pr
 
 382com SMS format looks like this:
 ```
-source=3035551212
-destination=3039991111
-message=Hello+World
-type=sms
+{
+	"source": "5083084809",
+	"destination": "3393646057",
+	"type": "sms",
+	"message": "Hello there"
+}
 ```
 
 and MMS format looks like this:
 ```
-source=3035551212
-destination=3039991111
-message=http://picmsg.org/[unique_identifier].jpg
-type=mms
+{
+	"source": "5083084809",
+	"destination": "3393646057",
+	"type": "mms",
+	"message": "http://picmsg.org/[unique_identifier].jpg"
+}
 ```
 
 standard format is:

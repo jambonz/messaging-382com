@@ -6,32 +6,13 @@ const noopLogger = {
 };
 
 const fromProviderFormat = (opts, payload) => {
-  payload.split('\n')
-    .map((l) => l.trim())
-    .forEach((line) => {
-      const arr = /^(.*)=(.*)$/.exec(line);
-      if (arr) {
-        switch (arr[1]) {
-          case 'source':
-            opts.from = arr[2];
-            break;
-          case 'destination':
-            opts.to = arr[2];
-            break;
-          case 'message':
-            if (arr[2].startsWith('http://') || arr[2].startsWith('https://')) {
-              opts.media = [arr[2]];
-            }
-            else {
-              opts.text = arr[2];
-            }
-            break;
-          default:
-            break;
-        }
-      }
-    });
-  return opts;
+  return Object.assign({}, opts, {
+    from: payload.source,
+    to: [payload.destination],
+    cc: [],
+    text: payload.type === 'sms' ? payload.message : null,
+    media: payload.type === 'mms' ? [payload.message] : null
+  });
 };
 
 const sendSms = async(opts, body) => {

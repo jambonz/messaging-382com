@@ -4,10 +4,12 @@ const {fromProviderFormat, sendSms} = require('..');
 test('parse incoming sms', async(t) => {
 
   try {
-    let payload = `source=3035551212
-    destination=3039991111
-    message=Hello+World
-    type=sms`;
+    let payload = {
+      "source": "3035551212",
+      "destination": "3393646057",
+      "type": "sms",
+      "message": "Hello there"
+    };
 
     let obj = await fromProviderFormat({
       messageSid: 'foo',

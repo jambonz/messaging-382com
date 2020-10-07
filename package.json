@@ -1,6 +1,6 @@
 {
   "name": "@jambonz/messaging-382com",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "body parsing function for incoming SMS from 382 com",
   "main": "index.js",
   "scripts": {
